@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjl.mapper.TPermissionMenuMapper">
+  <resultMap id="BaseResultMap" type="com.zjl.bean.TPermissionMenu">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="menuid" jdbcType="INTEGER" property="menuid" />
+    <result column="permissionid" jdbcType="INTEGER" property="permissionid" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_permission_menu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zjl.bean.TPermissionMenu">
+    insert into t_permission_menu (id, menuid, permissionid
+      )
+    values (#{id,jdbcType=INTEGER}, #{menuid,jdbcType=INTEGER}, #{permissionid,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zjl.bean.TPermissionMenu">
+    update t_permission_menu
+    set menuid = #{menuid,jdbcType=INTEGER},
+      permissionid = #{permissionid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, menuid, permissionid
+    from t_permission_menu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, menuid, permissionid
+    from t_permission_menu
+  </select>
+</mapper>

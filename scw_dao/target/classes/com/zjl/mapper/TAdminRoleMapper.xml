@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjl.mapper.TAdminRoleMapper">
+  <resultMap id="BaseResultMap" type="com.zjl.bean.TAdminRole">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="adminid" jdbcType="INTEGER" property="adminid" />
+    <result column="roleid" jdbcType="INTEGER" property="roleid" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_admin_role
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zjl.bean.TAdminRole">
+    insert into t_admin_role (id, adminid, roleid
+      )
+    values (#{id,jdbcType=INTEGER}, #{adminid,jdbcType=INTEGER}, #{roleid,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zjl.bean.TAdminRole">
+    update t_admin_role
+    set adminid = #{adminid,jdbcType=INTEGER},
+      roleid = #{roleid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, adminid, roleid
+    from t_admin_role
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, adminid, roleid
+    from t_admin_role
+  </select>
+</mapper>

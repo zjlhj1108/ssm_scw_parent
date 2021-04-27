@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjl.mapper.TTransactionMapper">
+  <resultMap id="BaseResultMap" type="com.zjl.bean.TTransaction">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ordersn" jdbcType="VARCHAR" property="ordersn" />
+    <result column="paysn" jdbcType="VARCHAR" property="paysn" />
+    <result column="memberid" jdbcType="INTEGER" property="memberid" />
+    <result column="amount" jdbcType="REAL" property="amount" />
+    <result column="paystate" jdbcType="TINYINT" property="paystate" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="completiontime" jdbcType="VARCHAR" property="completiontime" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="createat" jdbcType="VARCHAR" property="createat" />
+    <result column="updateat" jdbcType="VARCHAR" property="updateat" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_transaction
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zjl.bean.TTransaction">
+    insert into t_transaction (id, ordersn, paysn, 
+      memberid, amount, paystate, 
+      source, status, completiontime, 
+      note, createat, updateat
+      )
+    values (#{id,jdbcType=INTEGER}, #{ordersn,jdbcType=VARCHAR}, #{paysn,jdbcType=VARCHAR}, 
+      #{memberid,jdbcType=INTEGER}, #{amount,jdbcType=REAL}, #{paystate,jdbcType=TINYINT}, 
+      #{source,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{completiontime,jdbcType=VARCHAR}, 
+      #{note,jdbcType=VARCHAR}, #{createat,jdbcType=VARCHAR}, #{updateat,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zjl.bean.TTransaction">
+    update t_transaction
+    set ordersn = #{ordersn,jdbcType=VARCHAR},
+      paysn = #{paysn,jdbcType=VARCHAR},
+      memberid = #{memberid,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=REAL},
+      paystate = #{paystate,jdbcType=TINYINT},
+      source = #{source,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT},
+      completiontime = #{completiontime,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      createat = #{createat,jdbcType=VARCHAR},
+      updateat = #{updateat,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, ordersn, paysn, memberid, amount, paystate, source, status, completiontime, 
+    note, createat, updateat
+    from t_transaction
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, ordersn, paysn, memberid, amount, paystate, source, status, completiontime, 
+    note, createat, updateat
+    from t_transaction
+  </select>
+</mapper>

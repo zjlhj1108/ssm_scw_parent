@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>cn.zjl</groupId>
+		<artifactId>ssm_scw_parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../../ssm_scw_parent/pom.xml</relativePath>
+	</parent>
+	<artifactId>scw_service</artifactId>
+	<name>service</name>
+	<description>业务层</description>
+	<dependencies>
+		<dependency>
+			<groupId>cn.zjl</groupId>
+			<artifactId>scw_dao</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-jcl</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+</project>
